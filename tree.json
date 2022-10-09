@@ -1,0 +1,107 @@
+{
+    "firstPlanet": {
+        "img": "img/pluton.png",
+        "x": "410",
+        "Y": "180",
+        "name": "Plutón",
+        "codigo": "100",
+        "materials": {
+            "oro": 50,
+            "plata": 0,
+            "bronce": 0
+        },
+        "left": {
+            "img": "img/mercurio.png",
+            "x": "210",
+            "Y": "280",
+            "name": "Mercurio",
+            "codigo": "50",
+            "materials": {
+                "oro": 0,
+                "plata": 45,
+                "bronce": 0
+            },
+            "left": {
+                "img": "img/tarca.png",
+                "x": "110",
+                "Y": "420",
+                "name": "Tarca",
+                "codigo": "20",
+                "materials": {
+                    "oro": 0,
+                    "plata": 0,
+                    "bronce": 20
+                },
+                "left": null,
+                "right": null
+            },
+            "right": {
+                "img": "img/zulman.png",
+                "x": "310",
+                "Y": "420",
+                "name": "Zulman",
+                "codigo": "80",
+                "materials": {
+                    "oro": 0,
+                    "plata": 100,
+                    "bronce": 0
+                },
+                "left": null,
+                "right": null
+            }
+        },
+        "right": {
+            "img": "img/triton.png",
+            "x": "610",
+            "Y": "280",
+            "name": "Tritón",
+            "codigo": "150",
+            "materials": {
+                "oro": 0,
+                "plata": 90,
+                "bronce": 0
+            },
+            "left": {
+                "img": "img/zork.png",
+                "x": "510",
+                "Y": "420",
+                "name": "Zork",
+                "codigo": "120",
+                "materials": {
+                    "oro": 0,
+                    "plata": 90,
+                    "bronce": 0
+                },
+                "left": {
+                    "img": "img/yari.png",
+                    "x": "450",
+                    "Y": "560",
+                    "name": "Yari",
+                    "codigo": "110",
+                    "materials": {
+                        "oro": 0,
+                        "plata": 110,
+                        "bronce": 0
+                    },
+                    "left": null,
+                    "right": null
+                },
+                "right": null
+            },
+            "right": {
+                "img": "img/beltrak.png",
+                "x": "710",
+                "Y": "420",
+                "name": "Beltrak",
+                "codigo": "200",
+                "materials": {
+                    "oro": 0,
+                    "plata": 0,
+                    "bronce": 100
+                },
+                "left": null,
+                "right": null
+            }
+        }
+    }
+}

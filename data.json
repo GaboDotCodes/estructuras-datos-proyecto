@@ -1,0 +1,75 @@
+{
+  "firstPlanet": {
+    "name": "Pluton",     
+    "materials" : {
+      "oro": 50,
+      "plata": 0,
+      "bronce": 0
+    },
+    "left": {
+      "name": "Mercurio",      
+      "materials" : {
+        "oro": 0,
+        "plata": 45,
+        "bronce": 0
+      },
+      "left": {
+        "name": "Tarca",        
+        "materials" : {
+          "oro": 0,
+          "plata": 0,
+          "bronce": 20
+        },
+        "left": null,
+        "right": null
+      },
+      "right": {
+        "name": "Zulman",        
+        "materials" : {
+          "oro": 0,
+          "plata": 100,
+          "bronce": 0
+        },
+        "left": null,
+        "right": null
+      }
+    },
+    "right": {
+      "name": "Triton",      
+      "materials" : {
+        "oro": 0,
+        "plata": 90,
+        "bronce": 0
+      },
+      "left": {
+        "name": "Zork",        
+        "materials" : {
+          "oro": 0,
+          "plata": 90,
+          "bronce": 0
+        },
+        "left": {
+          "name": "Yari",          
+          "materials" : {
+            "oro": 110,
+            "plata": 0,
+            "bronce": 0
+          },
+          "left": null,
+          "right": null
+        },
+        "right": null
+      },
+      "right": {
+        "name": "Beltrak",        
+        "materials" : {
+          "oro": 0,
+          "plata": 0,
+          "bronce": 100
+        },
+        "left": null,
+        "right": null
+      }
+    }
+  }
+}
