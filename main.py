@@ -1,3 +1,4 @@
+import traceback
 import pygame, sys, threading
 from time import sleep
 from Classes.Planet import Planet
@@ -8,6 +9,8 @@ from load_img import *
 
 # Inicialización de pygame
 pygame.init()
+
+clock = pygame.time.Clock()
 
 display = pygame.display.Info()
 width = display.current_w
@@ -26,43 +29,76 @@ gatherBtn = Button(window, Rect(width - 250, 80, 200, 40), "Gather")
 galacticSystemRect = Rect(width * 0.3, height * 0.2, width * 0.65, height * 0.70)
 storageTreeRect = Rect(width * 0.025, height * 0.2, width * 0.25, height * 0.70)
 
-producing = False
+producing = True
 def produce():
     while True:
-        if producing:
+        if not producing:
             break
         sleep(10)
         generalSystem.getGalacticSystem().produce()
-        pygame.display.update()
     
 produce_thread = threading.Thread(target=produce, args=())
 
-# Ciclo de funcionamiento 
-while True:
-    window.blit(pygame.image.load('img/bg1.jpg'), (0, 0))
-    # Imágenes en la pantalla 
-    load_img(window, pygame.image.load('img/store.png'), 10, 10)
-    load_img(window, pygame.image.load('img/naves.png'), 260, 10)
-    generateSystemBtn.show()
-    gatherBtn.show()
-
-    # Salir del juego 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            producing = True
-            sys.exit()
-        
-        # Si el mouse está sobre el botón 
-        if event.type == MOUSEBUTTONDOWN:
-            if gatherBtn.getCP(mouse.get_pos()):
-                print("Clic")
-            if generateSystemBtn.getCP(mouse.get_pos()):
-                data = getJsonFromFile()
-                for planet in data['planets']:
-                    newPlanet = Planet(planet['code'], planet['image'], planet['data'])
-                    generalSystem.getGalacticSystem().addNode(newPlanet)
-                produce_thread.start()
-    generalSystem.getGalacticSystem().showTree(window, galacticSystemRect)
+gathering = True
+def gather():
+    while True:
+        if not producing:
+            break
+        generalSystem.gather()
+        sleep(5)
     
-    # Actualizar cambios
-    pygame.display.update()
+gather_thread = threading.Thread(target=gather, args=())
+
+running = True
+
+# Ciclo de funcionamiento 
+try:
+    while running:
+        window.blit(pygame.image.load('img/bg1.jpg'), (0, 0))
+        # Imágenes en la pantalla 
+        load_img(window, pygame.image.load('img/store.png'), 10, 10)
+        load_img(window, pygame.image.load('img/naves.png'), 260, 10)
+        generateSystemBtn.show()
+        gatherBtn.show()
+
+        # Salir del juego 
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                producing = False
+                gathering = False
+                running = False
+                sys.exit()
+            
+            # Si el mouse está sobre el botón 
+            if event.type == MOUSEBUTTONDOWN:
+                if gatherBtn.getCP(mouse.get_pos()):
+                    if generalSystem.getGalacticSystem().getRoot() == None:
+                        print('No se puede recoletar sin un sistema')
+                    elif not gather_thread.is_alive():
+                        gather_thread.start()
+                    
+                if generateSystemBtn.getCP(mouse.get_pos()):
+                    data = getJsonFromFile()
+                    for planet in data['planets']:
+                        newPlanet = Planet(planet['code'], planet['image'], planet['data'])
+                        generalSystem.getGalacticSystem().addNode(newPlanet)
+                    produce_thread.start()
+        
+        generalSystem.getGalacticSystem().showTree(window, galacticSystemRect)
+        
+        for ship in generalSystem.getCompany().getGatheringShips():
+            ship_image = ship.getImage()
+            side = ship.getSide()
+            img = pygame.image.load(ship_image)
+            img_t = transform.scale(img, (side, side))
+            load_img(window, img_t, ship.getXPos(), ship.getYPos())
+            ship.updatePosition(clock.get_time())
+        
+        clock.tick(30)
+        # Actualizar cambios
+        pygame.display.update()
+    pygame.quit()
+except Exception:
+    traceback.print_exc()
+    pygame.quit()
+    sys.exit(1)

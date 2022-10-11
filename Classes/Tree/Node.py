@@ -5,7 +5,9 @@ class Node:
         self.data = data
         self.left = None
         self.right = None
-        self.visited = False
+        self.x = 0
+        self.y = 0
+        self.side = 0
 
     def getCode(self):
         return self.code
@@ -22,17 +24,32 @@ class Node:
     def getRight(self):
         return self.right
     
+    def getX(self):
+        return self.x
+    
+    def getY(self):
+        return self.y
+    
+    def getSide(self):
+        return self.side
+    
     def updateData(self, dataToUpdate):
      self.data.update(dataToUpdate)
+    
+    def setX(self, x):
+        self.x = x
+        
+    def setY(self, y):
+        self.y = y
+    
+    def setSide(self, side):
+        self.side = side
     
     def setLeft(self, left):
         self.left=left
     
     def setRight(self, right):
         self.right = right
-    
-    def visit(self):
-        self.visited = True
         
     def isLeaf(self):
         return self.left == None and self.right == None

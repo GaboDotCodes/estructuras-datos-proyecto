@@ -1,18 +1,18 @@
+from Classes.Company import Company
 from Classes.GalacticSystem import GalacticSystem
 
 class System:
   def __init__(self):
     self.galactic_system = GalacticSystem([('Name: ','name'), ('', 'materials')])
-    self.company = None
-  
-  def setGalacticSystem(self, galactic_system):
-    self.galactic_system = galactic_system
+    self.company = Company("ACME")
     
   def getGalacticSystem(self):
     return self.galactic_system
+
+  def getCompany(self):
+    return self.company
   
-  def setGalacticSystem(self, galacticSystem):
-    self.galactic_system = galacticSystem
-  
-  def setCompany(self, company):
-    self.company = company
+  def gather(self):
+    path = self.galactic_system.getRandomPathToNode()
+    self.company.sendShipToGather(path)
+    

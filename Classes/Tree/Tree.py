@@ -1,3 +1,4 @@
+from random import randint
 from pygame import draw, image, transform, font
 
 class Tree:
@@ -70,7 +71,9 @@ class Tree:
         img = image.load(node.getImage())
         img_t = transform.scale(img, (side, side))
         window.blit(img_t, point)
-        
+        node.setX(point[0])
+        node.setY(point[1])
+        node.setSide(side)
         fontConfig = font.SysFont("Calibri", 18)
         labels = []
         labels.append(fontConfig.render('Codigo: {}'.format(node.getCode()), True, (255, 255, 255)))
@@ -93,6 +96,19 @@ class Tree:
             
             rightPoint = (point[0] + x_step, point[1] + y_step)
             self.showNodes(window, side, x_step * 0.5, y_step, node.getRight(), rightPoint)            
+    
+    def randomPathToNode(self, temp, count):
+        if self.root == None:
+            return [None]
+        if temp.isLeaf() or count == 1:
+            return [temp]
+        nextL = temp.getLeft() if temp.getLeft() != None else temp.getRight()
+        nextR = temp.getRight() if temp.getRight() != None else temp.getLeft()
+        nextTemp = nextL if randint(0,1) == 0 else nextR
+        return [temp] + self.randomPathToNode(nextTemp , count - 1)
+    
+    def getRandomPathToNode(self):
+        return self.randomPathToNode(self.root, randint(0, self.getHeight() - 1))
         
     def getList(self):
         return self.list
@@ -100,7 +116,6 @@ class Tree:
     def Recorrido1(self, padre):
         if padre == None:
             return
-        
         self.Recorrido1(padre.getLeft())
         self.list.append(padre.getCode())
         self.Recorrido1(padre.getRight())
