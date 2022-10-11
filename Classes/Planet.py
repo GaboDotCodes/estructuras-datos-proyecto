@@ -1,37 +1,12 @@
-class Planet:
-  def __init__(self, name, materials, code):
-    self.name = name
-    self.materials = materials
-    self.code = code
+from Classes.Tree.Node import *
 
-  def __getitem__(self, arg):
-        return str(arg)*3
-
-  def getName(self):
-    return self.name
+class Planet(Node):
+  def __init__(self, code, image, data):
+    super().__init__(code, image, data)
   
-  def getMaterials(self):
-    return self.materials
-  
-  def getMaterial(self, material):
-    return self.materials[material]
-  
-  def getCode(self):
-    return self.code
-  
-  def getRightPlanet(self):
-    return self.rightPlanet
-
-  def getLeftPlanet(self):
-    return self.leftPlanet
-  
-  def setRightPlanet(self, rightPlanet):
-    self.rightPlanet = rightPlanet
-
-  def setLeftPlanet(self, leftPlanet):
-    self.leftPlanet = leftPlanet
-
-  def extractMaterial(self, material, amount):
-    if (self.materials[material] < amount):
-      raise ValueError("Material is not enough")
-    self.materials[material] = self.materials[material] - amount
+  def produce(self):
+    data = self.getData()['materials'].items()
+    filtered = filter(lambda material: material[1] > 0, data)
+    toUpdate = list(filtered)[0]
+    self.updateData({'materials': { toUpdate[0]: toUpdate[1] + 2}})
+    print(self.getData())

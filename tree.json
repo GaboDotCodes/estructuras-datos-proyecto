@@ -3,8 +3,8 @@
         "img": "img/pluton.png",
         "x": "410",
         "Y": "180",
-        "name": "Plutón",
-        "codigo": "100",
+        "name": "Pluton",
+        "code": 100,
         "materials": {
             "oro": 50,
             "plata": 0,
@@ -15,7 +15,7 @@
             "x": "210",
             "Y": "280",
             "name": "Mercurio",
-            "codigo": "50",
+            "code": 50,
             "materials": {
                 "oro": 0,
                 "plata": 45,
@@ -26,7 +26,7 @@
                 "x": "110",
                 "Y": "420",
                 "name": "Tarca",
-                "codigo": "20",
+                "code": 20,
                 "materials": {
                     "oro": 0,
                     "plata": 0,
@@ -40,7 +40,7 @@
                 "x": "310",
                 "Y": "420",
                 "name": "Zulman",
-                "codigo": "80",
+                "code": 80,
                 "materials": {
                     "oro": 0,
                     "plata": 100,
@@ -54,8 +54,8 @@
             "img": "img/triton.png",
             "x": "610",
             "Y": "280",
-            "name": "Tritón",
-            "codigo": "150",
+            "name": "Triton",
+            "code": 150,
             "materials": {
                 "oro": 0,
                 "plata": 90,
@@ -66,7 +66,7 @@
                 "x": "510",
                 "Y": "420",
                 "name": "Zork",
-                "codigo": "120",
+                "code": 120,
                 "materials": {
                     "oro": 0,
                     "plata": 90,
@@ -77,7 +77,7 @@
                     "x": "450",
                     "Y": "560",
                     "name": "Yari",
-                    "codigo": "110",
+                    "code": 110,
                     "materials": {
                         "oro": 0,
                         "plata": 110,
@@ -93,7 +93,7 @@
                 "x": "710",
                 "Y": "420",
                 "name": "Beltrak",
-                "codigo": "200",
+                "code": 200,
                 "materials": {
                     "oro": 0,
                     "plata": 0,
