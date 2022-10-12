@@ -49,6 +49,24 @@ def gather():
     
 gather_thread = threading.Thread(target=gather, args=())
 
+
+moving_ships = True
+def move_ships():
+    while True:
+        if not moving_ships:
+            break
+        for ship in generalSystem.getCompany().getGatheringShips():
+            print('ID: {} LEN: {}'.format(ship.getId(), len(ship.getPath())))
+            ship_image = ship.getImage()
+            side = ship.getSide()
+            img = pygame.image.load(ship_image)
+            img_t = transform.scale(img, (side, side))
+            load_img(window, img_t, ship.getXPos(), ship.getYPos())
+            ship.updatePosition()
+        sleep(2)
+    
+moving_ships_thread = threading.Thread(target=move_ships, args=())
+
 running = True
 
 # Ciclo de funcionamiento 
@@ -67,6 +85,7 @@ try:
                 producing = False
                 gathering = False
                 running = False
+                moving_ships = False
                 sys.exit()
             
             # Si el mouse está sobre el botón 
@@ -76,6 +95,7 @@ try:
                         print('No se puede recoletar sin un sistema')
                     elif not gather_thread.is_alive():
                         gather_thread.start()
+                        moving_ships_thread.start()
                     
                 if generateSystemBtn.getCP(mouse.get_pos()):
                     data = getJsonFromFile()
@@ -86,17 +106,19 @@ try:
         
         generalSystem.getGalacticSystem().showTree(window, galacticSystemRect)
         
-        for ship in generalSystem.getCompany().getGatheringShips():
-            ship_image = ship.getImage()
-            side = ship.getSide()
-            img = pygame.image.load(ship_image)
-            img_t = transform.scale(img, (side, side))
-            load_img(window, img_t, ship.getXPos(), ship.getYPos())
-            ship.updatePosition(clock.get_time())
+        # for ship in generalSystem.getCompany().getGatheringShips():
+        #     print('ID: {} LEN: {}'.format(ship.getId(), len(ship.getPath())))
+        #     ship_image = ship.getImage()
+        #     side = ship.getSide()
+        #     img = pygame.image.load(ship_image)
+        #     img_t = transform.scale(img, (side, side))
+        #     load_img(window, img_t, ship.getXPos(), ship.getYPos())
+        #     ship.updatePosition()
         
         clock.tick(30)
         # Actualizar cambios
         pygame.display.update()
+        
     pygame.quit()
 except Exception:
     traceback.print_exc()

@@ -1,0 +1,104 @@
+{
+    "planets": [
+        {
+            "image": "img/pluton.png",
+            "code": 100,
+            "data": {
+                "name": "Pluton",
+                "materials": {
+                    "oro": 50
+                }
+            }
+        },
+        {
+            "image": "img/mercurio.png",
+            "code": 50,
+            "data": {
+                "name": "Mercurio",
+                "materials": {
+                    "plata": 45
+                }
+            }
+        },
+        {
+            "image": "img/tarca.png",
+            "code": 20,
+            "data": {
+                "name": "Tarca",
+                "materials": {
+                    "bronce": 20
+                }
+            }
+        },
+        {
+            "image": "img/zulman.png",
+            "code": 80,
+            "data": {
+                "name": "Zulman",
+                "materials": {
+                    "plata": 100
+                }
+            }
+        },
+        {
+            "image": "img/triton.png",
+            "code": 150,
+            "data": {
+                "name": "Triton",
+                "materials": {
+                    "plata": 90
+                }
+            }
+        },
+        {
+            "image": "img/zork.png",
+            "code": 120,
+            "data": {
+                "name": "Zork",
+                "materials": {
+                    "plata": 90
+                }
+            }
+        },
+        {
+            "image": "img/yari.png",
+            "code": 110,
+            "data": {
+                "name": "Yari",
+                "materials": {
+                    "plata": 110
+                }
+            }
+        },
+        {
+            "image": "img/beltrak.png",
+            "code": 200,
+            "data": {
+                "name": "Beltrak",
+                "materials": {
+                    "bronce": 100
+                }
+            }
+        },
+        {
+            "image": "img/zork.png",
+            "code": 120,
+            "data": {
+                "name": "Urano",
+                "materials": {
+                    "bronce": 20
+                }
+            }
+        },
+        {
+            "image": "img/mercurio.png",
+            "code": 190,
+            "data": {
+                "name": "Marte",
+                "materials": {
+                    "oro": 15
+                }
+            }
+        }
+    ]
+}

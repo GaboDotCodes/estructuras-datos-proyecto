@@ -14,5 +14,6 @@ class System:
   
   def gather(self):
     path = self.galactic_system.getRandomPathToNode()
+    print(path)
     self.company.sendShipToGather(path)
     
